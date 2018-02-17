@@ -1,6 +1,32 @@
 # hello-world
-#myfirstrepository
 
-Hey Friends, Pippi here. Decided I want to start teaching myself a bit of code and maybe build an app.
+class HelloMessage extends React.Component {
+  render() {
+    return (
+      <div>
+        Hi {this.props.name}
+      </div>
+    );
+  }
+}
 
-Here we go!
+ReactDOM.render(
+  <HelloMessage name="Pippi" />,
+  mountNode
+);
+
+class Timer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { seconds: 0 };
+  }
+
+  tick() {
+    this.setState(prevState => ({
+      seconds: prevState.seconds + 1
+    }));
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 1000);
+  }
